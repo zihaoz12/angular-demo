@@ -1,0 +1,17 @@
+<p>product works!</p>
+{{Hello}}
+{{One + Two}}
+
+<input #productTxt type="text" [value]="Hello" (input)="changeProductName(productTxt.value)">
+<input type="button" value="Toggle" (click)="clickButton()">
+<input type="text" [value]="productTxt.value">
+<input type="text" [(ngModel)]="Hello">
+<div *ngIf="isToggled">
+    <p>{{productTxt.value}}</p>
+</div>
+
+<div>
+    <ul>
+        <li *ngFor="let item of productList; let i = index">{{(i+1) + ". " + item}}</li>
+    </ul>
+</div>

@@ -1,0 +1,24 @@
+<p>posts works!</p>
+<div>
+    <input type="text" placeholder="Search....." #SearchValue>
+    <input type="button" (click)="renderPosts()" value="Reload">
+    <input type="button" (click)="getPostsByUserId(SearchValue.value)" value="FindByUserId">
+    <input type="button" value="Filter UserID" (click)="filterById(SearchValue.value)">
+</div>
+<table width="100%">
+    <tr>
+        <th>User ID</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Body</th>
+    </tr>
+
+    <tr *ngFor="let item of posts">
+        <td>{{item.userId}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.body}}</td>
+    </tr>
+
+    
+</table>

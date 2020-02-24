@@ -1,0 +1,16 @@
+<p>todo-item works!</p>
+
+<div class="todolist-container">
+    <h1>To Do List </h1>
+    <input #todoInput type="text" [(ngModel)]="todoValue" >
+    <input type="button" value="Submit" (click)="addNewTodo()">
+    <div>
+        <ul>
+            <li *ngFor="let item of todoList, let i = index" >
+                <input type="checkbox" [(ngModel)]="item.isCompleted" (click)="completeTodo(i)">{{item.title}}
+                <span><input type="button" value="Remove" (click)="removeTodo(i)" ></span>
+                <a *ngIf="item.isCompleted">Completed</a>
+            </li>
+        </ul>
+    </div>
+</div>
