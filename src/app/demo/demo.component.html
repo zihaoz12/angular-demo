@@ -1,0 +1,38 @@
+<p>Form Demo works!</p>
+<form>
+    <div>
+        <label for="name">
+          Name
+        </label>
+        <input id="name" type="text" >
+    </div>
+    
+    <div>
+        <label for="address">
+          Address
+        </label>
+        <input id="address" type="text" >
+    </div>
+    
+      <button class="button" type="submit">Submit</button>
+</form>
+
+<div *ngFor="let student of students">
+    <h4>
+        <a [title]="student.firstName + ' details'"></a>
+        {{student.firstName}} 
+    </h4>
+
+    <p *ngIf="student.email">
+        {{student.email}}
+    </p>
+
+    <button (click)="shareItem()">
+        Share
+    </button>
+    
+    <app-demo-alerts [student]="student"
+                    (notify)="onNotify()"
+    >
+    </app-demo-alerts>
+</div>

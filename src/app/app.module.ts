@@ -8,6 +8,8 @@ import { ProductComponent } from './product/product.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DemoComponent } from './demo/demo.component';
+import { DemoAlertsComponent } from './demo-alerts/demo-alerts.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ProductComponent,
     TodoItemComponent,
-    PostsComponent
+    PostsComponent,
+    DemoComponent,
+    DemoAlertsComponent
   ],
   imports: [
     BrowserModule,

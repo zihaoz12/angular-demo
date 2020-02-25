@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Post } from '../models/Post';
-
+import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,10 +12,18 @@ export class PostsService {
   constructor(private http: HttpClient) { }
   
   getPosts():Observable<Post[]>{
-     return this.http.get<Post[]>(`${this.postsURL}`)         
+     return this.http.get<Post[]>(`${this.postsURL}`)
+     .pipe(map( response => response as Post[])
+     , catchError( error => throwError( new Error(error)))
+     );
+
   }
 
-  getPostsById(userId):Observable<Post[]>{
+  getPostsByUserId(userId):Observable<Post[]>{
     return this.http.get<Post[]>(`${this.postsURL}?userId=${userId}`)
+    .pipe(map(res => res as Post[])
+    , catchError( err => throwError( new Error(err)))
+    )
+  
   }
 }

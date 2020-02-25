@@ -19,16 +19,9 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  renderPosts():void{
-    console.log("get Posts!!");
-    this.postService.getPosts().subscribe( (posts:Post[])=> {
-      this.posts = posts
-    })
-  }
-
   getPostsByUserId(userId):void{
     console.log("Test get by id:",userId);
-    this.postService.getPostsById(userId).subscribe((posts:Post[])=>{
+    this.postService.getPostsByUserId(userId).subscribe((posts:Post[])=>{
       this.posts = posts
     })
   }
