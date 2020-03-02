@@ -32,3 +32,11 @@ div input[type="button"]{
     cursor: pointer;
     padding: .325rem;
 }
+
+.text-truncate {
+    display: inline-block;
+    max-width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,24 +1,54 @@
 <p>posts works!</p>
 <div>
+    {{ currentDate | date:format }}
+    <div>
+        <button (click)="toggleFormat()"> Toggle format</button>
+    </div>
+</div>
+<div>
+    <!-- <p>{{(str.length>textLength)?( str | slice:0:textLength)+ " ... " : (str)}}</p>   -->
+    <!-- <p> {{ str | collaspe:Length }}</p> 
+    <button (click)="readMore()">Read More</button> -->
+    <!-- <button (click)="openModal()">Open Modal</button> -->
+</div>
+
+<div>
+    {{timer$ | async}}
+</div>
+<div>
     <input type="text" placeholder="Search....." #SearchValue>
-    <input type="button" (click)="ngOnInit()" value="Reload">
+    <input type="button" (click)="renderPosts()" value="GetPosts">
+    <input type="button" (click)="clearPosts()" value="ClearPosts">
     <input type="button" (click)="getPostsByUserId(SearchValue.value)" value="FindByUserId">
     <input type="button" value="Filter UserID" (click)="filterById(SearchValue.value)">
 </div>
-<table width="100%">
+<table width="100%" *ngIf="showPosts" id="postsTable">
     <tr>
         <th>User ID</th>
         <th>ID</th>
         <th>Title</th>
         <th>Body</th>
+        <th>Options</th>
     </tr>
 
-    <tr *ngFor="let item of posts">
-        <td>{{item.userId}}</td>
+    <tr *ngFor="let item of posts" >
+        <!-- <td>{{item.userId | amplify:5 }}</td> -->
+        <td>{{item.userId  }}</td>
         <td>{{item.id}}</td>
-        <td>{{item.title}}</td>
-        <td>{{item.body}}</td>
+        <td>{{item.title | collaspe:collaspeText}}
+            <span >
+                <a (click)="readMore()">...</a>
+            </span>
+        </td>
+        <td [class.text-truncate]="isExpand" (click)="isExpandToggle()">{{item.body}}
+        </td>
+        <td>
+            <input  type="button" value="Comments" (click)="openModal(item.id)">
+        </td>
     </tr>
 
     
 </table>
+
+
+

@@ -1,0 +1,130 @@
+<h3>Add User </h3>
+<div class="container">
+    <h4 class="mb-3">Billing address</h4>
+        <form class="needs-validation" [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name"  formControlName="name" [class.is-invalid]="name.invalid && name.touched" placeholder="" value="" required>
+                    <div class="alert alert-danger mt-2" *ngIf="name.invalid && (name.dirty || name.touched)" >
+                        Valid name is required.
+                    </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" formControlName="username" [class.is-invalid]="username.invalid && username.touched" placeholder="" value="" required>
+                    <div class="alert alert-danger mt-2" *ngIf="username.invalid && username.touched">
+                        Valid  username is required.
+                    </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email"  [class.is-invalid]="email.invalid && email.touched" placeholder="" value="" required>
+                    <div class="alert alert-danger mt-2" *ngIf="email.invalid && email.touched">
+                        <div *ngIf="email.errors.required">
+                            Email is Required
+                        </div>
+                        <div *ngIf="email.errors.pattern">
+                            Please provide a valid email address
+                        </div>
+                    </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6  mb3">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" formControlName="phone" [class.is-invalid]="phone.invalid && phone.touched" laceholder="" value="" required>
+                    <div class="alert alert-danger mt-2" *ngIf="phone.invalid && phone.touched">
+                        <div *ngIf="phone.errors.required">
+                            Phone Number is Required
+                        </div>
+                        <div *ngIf="phone.errors.pattern">
+                            Please provide a valid Phone Number
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-6  mb3">
+                <label for="website">Website</label>
+                <input type="text" class="form-control" id="website" formControlName="website" [class.is-invalid]="website.invalid && website.touched" placeholder="" value="" required>
+                    <div class="alert alert-danger mt-2" *ngIf="website.invalid && website.touched">
+                        Website is Required
+                    </div>
+            </div>
+         </div>
+
+         <h4 class="mt-3 mb-3">Home Address</h4>
+         <div formGroupName="address">
+            <div class="row">
+            <div class="col-md-6  mb3">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" id="street" formControlName="street"  placeholder="" value="" >
+                
+            </div>
+            <div class="col-md-6  mb3">
+                <label for="suite">Suite</label>
+                <input type="text" class="form-control" id="suite" formControlName="suite"  placeholder="" value="" >
+                
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="col-md-4 mb3">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" formControlName="city"  placeholder="" value="" >
+                   
+            </div>
+            <div class="col-md-4 mb3">
+                <label for="zipcode">Zip Code</label>
+                <input type="text" class="form-control" id="zipcode" formControlName="zipcode" placeholder="" value="" >
+                    
+            </div>
+         </div>
+         </div>
+
+        <div formGroupName="company">
+         <h4 class="mt-3 ">Company</h4>
+         <div class="row">
+            <div class="col-md-4 mb3">
+                <label for="company-name">name</label>
+                <input type="text" class="form-control"  formControlName="name" id="company-city" placeholder="" value="" required>
+                <div class="alert alert-danger mt-2" *ngIf="companyname.invalid && companyname.touched">
+                    Company Name is Required
+                </div>
+            </div>
+            <div class="col-md-4 mb3">
+                <label for="catchPhrase">Catch Phrase</label>
+                <input type="text" class="form-control" formControlName="catchPhrase" id="catchPhrase" placeholder="" value="" >
+            </div>
+            <div class="col-md-4 mb3">
+                <label for="bs">bs</label>
+                <input type="text" class="form-control" formControlName="bs" id="bs" placeholder="" value="" >
+            </div>
+         </div>
+        </div>
+              <div>{{userForm.valid}}</div>  
+         <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary mt-3 float-right" >Submit</button>
+        </form>
+</div>
+
+
+<div>
+    {{userForm.value | json}}
+</div>
+
+
+<!-- <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <input type="text"  formControlName= "firstName" placeholder="First Name" required>
+    <div *ngIf="userForm.get('firstName').invalid && userForm.get('firstName').hasError('required')">
+        Error: First Name required
+    </div>
+    <input type="text"  formControlName= "lastName"  placeholder="Last Name" required>
+    <input type="text"  placeholder="Email">
+    <input type="text"  placeholder="Mobile Number">
+    <input type="submit" [disabled]="!userForm.valid">
+
+    <button type="button" class="btn btn-primary">Primary</button>
+    <div>
+        {{userForm.get('firstName').errors | json}}
+    </div>
+
+</form> -->

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoComponent implements OnInit {
 
+  
+
   students = [
     {
       id:1,
